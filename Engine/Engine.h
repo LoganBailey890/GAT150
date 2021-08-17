@@ -7,16 +7,22 @@
 
 //core
 #include "Core/FileSystem.h"
+#include "Core/Timer.h"
+#include "Core/Utilites.h"
 
 //graphics
 #include "Grapics/Render.h"
 #include "Grapics/Texture.h"
+#include "Grapics/Particalsystem.h"
+#include "Graphics/Font.h"
 
+//Math
 #include "Math/Vector2.h"
 #include "Math/Color.h"
 #include "Math/Random.h"
 #include "Math/MathUtilis.h"
 #include "Math/Transform.h"
+#include "Audio/AudioSystem.h"
 
 
 #include "Object/Actor.h"
@@ -37,11 +43,13 @@ namespace nc
 		void Startup();
 		void Shutdown();
 
-		void Update(float dt);
-		void Draw();
+		void Update();
+		void Draw(Render* render);
 
 		template<typename T>
 		T* Get();
+	public:
+		FrameTimer time;
 	private:
 		std::vector<std::unique_ptr<System>> systems;
 	};

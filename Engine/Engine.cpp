@@ -8,6 +8,8 @@ namespace nc
 		systems.push_back(std::make_unique<Render>());
 		systems.push_back(std::make_unique<ResourceSystem>());
 		systems.push_back(std::make_unique<InputSystem>());
+		systems.push_back(std::make_unique<ParticleSystem>());
+		systems.push_back(std::make_unique<AudioSystem>());
 		//audio system
 
 		for (auto& system : systems)
@@ -17,21 +19,17 @@ namespace nc
 	}
 	void Engine::Shutdown()
 	{
-		for (auto& system : systems)
-		{
-			system->Shutdown();
-		}
+		std::for_each(systems.begin(), systems.end(), [](auto& system) { system->Shutdown(); });
 	}
-	void Engine::Update(float dt)
+	void Engine::Update()
 	{
-		for (auto& system : systems)
-		{
-			system->Update(dt);
-		}
+		time.Tick();
+		std::for_each(systems.begin(), systems.end(), [this](auto& system) { system->Update(this->time.deltaTime); });
 	}
-	void Engine::Draw()
+	void Engine::Draw(Render* render)
 	{
-		
+		std::for_each(systems.begin(), systems.end(), [render](auto& system) { if(dynamic_cast<GraphicsSystem*>(system.get())) dynamic_cast<GraphicsSystem*>(system.get())->Draw(render); });
+
 	}
 	
 }

@@ -5,9 +5,13 @@
 
 namespace nc
 {
+	class Render;
 	class Texture : public Resource
 	{
 	public:
+		Texture(){}
+		Texture(Render* render);
+		bool Create(SDL_Surface* surface);
 		bool Load(const std::string& name,void* data) override;
 		Vector2 Getsize()const;
 

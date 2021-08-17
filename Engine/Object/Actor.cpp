@@ -4,7 +4,8 @@
 
 void nc::Actor::Update(float dt)
 {
-    transform.rotation += 50;
+  
+    //transform.position.x += 100.0f * dt;
 
     transform.Update();
     std::for_each(children.begin(), children.end(), [](auto& child) {child->transform.Update(child->parent->transform.matrix); });
@@ -12,7 +13,8 @@ void nc::Actor::Update(float dt)
 
 void nc::Actor::Draw(Render* render)
 {
-    render->Draw(texture, transform);
+   if(texture) render->Draw(texture, transform);
+   std::for_each(children.begin(), children.end(), [render](auto& child) {child->Draw(render); });
 }
 void nc::Actor::AddChild(std::unique_ptr<Actor> actor)
 {
@@ -21,5 +23,6 @@ void nc::Actor::AddChild(std::unique_ptr<Actor> actor)
 }
 float nc::Actor::GetRadius()
 {
-    return std::max(texture->Getsize().x,texture->Getsize().y) * 0.5f;
+    //return std::max(texture->Getsize().x,texture->Getsize().y) * 0.5f;
+    return (texture) ? texture->Getsize().Length() * 0.5f *transform.scale.x : 0;
 }

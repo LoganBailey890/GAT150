@@ -71,6 +71,24 @@
     <ClCompile Include="Input\InputSystem.cpp">
       <Filter>Sources\Input</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Timer.cpp">
+      <Filter>Sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Grapics\Particalsystem.cpp">
+      <Filter>Sources\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\AudioSystem.cpp">
+      <Filter>Sources\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\AudioChannel.cpp">
+      <Filter>Sources\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Font.cpp">
+      <Filter>Sources\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Utilites.cpp">
+      <Filter>Sources\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\EventSystem.h">
@@ -129,6 +147,24 @@
     </ClInclude>
     <ClInclude Include="Input\InputSystem.h">
       <Filter>Sources\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Timer.h">
+      <Filter>Sources\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Grapics\Particalsystem.h">
+      <Filter>Sources\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\AudioSystem.h">
+      <Filter>Sources\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\AudioChannel.h">
+      <Filter>Sources\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Font.h">
+      <Filter>Sources\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Utilites.h">
+      <Filter>Sources\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

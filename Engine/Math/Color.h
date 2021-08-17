@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector2.h"
+#include <SDL.h>
 #include <string>
 
 namespace nc
@@ -43,5 +44,16 @@ namespace nc
         static const Color cyan;
         static const Color orange;
         static const Color yellow;
+
+       operator SDL_Color() const
+       {
+            SDL_Color color;
+            color.r = static_cast<Uint8>(r * 255);
+            color.g = 255;
+            color.b = 255;
+            color.a = 255;
+
+            return color;
+       }
     };
 }

@@ -1,5 +1,7 @@
 #include"Render.h"
+#include"Math/MathUtilis.h"
 #include<SDL_image.h>
+#include<SDL_ttf.h>
 #include<iostream>
 
 
@@ -12,11 +14,13 @@ namespace nc
 			std::cout << "SDL_inti Error." << SDL_GetError << std::endl;
 		}
 		IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
+		TTF_Init();
 	}
 
 	void nc::Render::Shutdown()
 	{
 		IMG_Quit();
+		TTF_Quit();
 		SDL_DestroyRenderer(renderer);
 		SDL_DestroyWindow(window);
 	}
@@ -35,7 +39,7 @@ namespace nc
 			SDL_Quit();
 		}
 
-		 renderer = SDL_CreateRenderer(window, -1, 0);
+		 renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
 	}
 
 	void nc::Render::BeginFrame()
@@ -52,9 +56,15 @@ namespace nc
 	{
 		Vector2 size = texture->Getsize();
 		size = size * scale;
+		Vector2 newPosition = position - (size * 0.5f);
 
-		SDL_Rect dest{ (int)position.x,(int)position.y,static_cast<int>(size.x),static_cast<int>(size.y) };
-		SDL_RenderCopyEx(renderer, texture->textur, nullptr,&dest,angle,nullptr,SDL_FLIP_VERTICAL);
+		SDL_Rect dest;
+		dest.x = static_cast<int>(newPosition.x);
+		dest.y = static_cast<int>(newPosition.y);
+		dest.w = static_cast<int>(size.x);
+		dest.h = static_cast<int>(size.y);
+
+		SDL_RenderCopyEx(renderer, texture->textur, nullptr,&dest,nc::RadToDeg(angle),nullptr,SDL_FLIP_NONE);
 	}
 
 	void Render::Draw(std::shared_ptr<nc::Texture> texture, const Transform& transform)
@@ -62,8 +72,15 @@ namespace nc
 		Vector2 size = texture->Getsize();
 		size = size * transform.scale;
 
-		SDL_Rect dest{ (int)transform.position.x,(int)transform.position.y,static_cast<int>(size.x),static_cast<int>(size.y) };
-		SDL_RenderCopyEx(renderer, texture->textur, nullptr, &dest,transform.rotation, nullptr, SDL_FLIP_VERTICAL);
+		Vector2 newPosition = transform.position - (size * 0.5f);
+
+		SDL_Rect dest;
+		dest.x = static_cast<int>(newPosition.x);
+		dest.y = static_cast<int>(newPosition.y);
+		dest.w = static_cast<int>(size.x);
+		dest.h = static_cast<int>(size.y);
+
+		SDL_RenderCopyEx(renderer, texture->textur, nullptr, &dest, nc::RadToDeg(transform.rotation), nullptr, SDL_FLIP_NONE);
 	}
 
 }

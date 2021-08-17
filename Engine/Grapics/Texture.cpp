@@ -3,12 +3,31 @@
 #include "Math/Vector2.h"
 #include <SDL_image.h>
 #include <iostream>
+#include<cassert>
 
 namespace nc 
 {
+	Texture::Texture(Render* render)
+	{
+		assert(render);
+		this->renderer = render->renderer;
+	}
+	bool Texture::Create(SDL_Surface* surface)
+	{
+		assert(surface);
+		textur = SDL_CreateTextureFromSurface(renderer, surface);
+		SDL_FreeSurface(surface);
+		if (textur == nullptr)
+		{
+			std::cout << "SDL_CreateTextureFromSurface Error:" << SDL_GetError() << std::endl;
+			return false;
 
+		}
+		return true;
+	}
 	bool nc::Texture::Load(const std::string& name,void* data)
 	{
+		assert(data);
 
 		renderer = static_cast<Render*>(data)->renderer;
 		// load surface
@@ -27,7 +46,7 @@ namespace nc
 			return false;
 		}
 
-		return false;
+		return true;
 	}
 
 

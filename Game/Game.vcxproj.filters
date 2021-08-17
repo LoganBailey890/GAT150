@@ -9,10 +9,45 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Sources\Actor">
+      <UniqueIdentifier>{e3b5e88a-881b-4504-81bf-3e34c27da584}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Sources\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Sources\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy2.cpp">
+      <Filter>Sources\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Sources\Actor</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Sources\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Sources\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy2.h">
+      <Filter>Sources\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Sources\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
