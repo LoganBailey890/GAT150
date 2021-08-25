@@ -3,6 +3,7 @@
 #include "Math/Transform.h"
 #include "Object/Scene.h"
 #include "Componet/Component.h"
+#include <Core/Serializable.h>
 
 
 #include <memory>
@@ -14,7 +15,7 @@ namespace nc
     class Texture;
     class Render;
 
-    class Actor : public Object
+    class Actor : public Object, public ISerializable
     {
     public:
         Actor() {}
@@ -30,6 +31,12 @@ namespace nc
 
         float GetRadius();
         void AddComponent(std::unique_ptr<Component> component);
+       
+
+        template<class T>
+        T* AddComponent();
+        virtual bool Write(const rapidjson::Value& value) const override;
+        virtual bool Read(const rapidjson::Value& value) override;
 
     public:
         bool destroy{ false };
@@ -41,5 +48,16 @@ namespace nc
         Actor* parent{nullptr};
         std::vector<std::unique_ptr<Actor>> children;
         std::vector<std::unique_ptr<Component>> components;
+
+
     };
+    template<class T>
+    inline T* Actor::AddComponent()
+    {
+        std::unique_ptr<T> component = std::make_unique<T>();
+        component->owner = this;
+
+        components.push_back(std::move(component));
+        return dynamic_cast<T*>(components.back().get());
+    }
 }

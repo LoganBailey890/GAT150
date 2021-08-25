@@ -16,6 +16,11 @@ namespace nc
 		{
 			system->Startup();
 		}
+		
+		REGISTER_CLASS(Actor)
+		REGISTER_CLASS(SpriteComponent)
+		REGISTER_CLASS(SpriteAnimationComponent)
+		REGISTER_CLASS(PhisicsComponenet)
 	}
 	void Engine::Shutdown()
 	{

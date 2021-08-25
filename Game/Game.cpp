@@ -11,22 +11,39 @@ void Game::Initialize()
     //create scene
     scene = std::make_unique<nc::Scene>();
     scene->engine = engine.get();
-    nc::setFilePath("../Resources");
     nc::SeedRandom(static_cast<unsigned int>(time(nullptr)));
+    nc::setFilePath("../Resources");
 
-     std::unique_ptr<nc::Actor> actor = std::make_unique < nc::Actor>(nc::Transform{ nc::Vector2{ 400,300 } });
-     {
-         std::unique_ptr<nc::SpriteComonent> component = std::make_unique<nc::SpriteComonent>();
-         component->textue = engine->Get<nc::ResourceSystem>()->Get<nc::Texture>("kim.png", engine->Get<nc::Render>());
-         actor->AddComponent(std::move(component));
-        
-     }
-     {
-         std::unique_ptr<nc::PhisicsComponenet> component = std::make_unique<nc::PhisicsComponenet>();
-         component->ApplyForce(nc::Vector2::right * 200);
-         actor->AddComponent(std::move(component));
-     }
-     scene->AddActor(std::move(actor));
+     //std::unique_ptr<nc::Actor> actor = std::make_unique < nc::Actor>(nc::Transform{ nc::Vector2{ 400,300 } });
+     //{
+     //    nc::SpriteComonent* component = actor->AddComponent<nc::SpriteComonent>();
+     //    component->textue = engine->Get<nc::ResourceSystem>()->Get<nc::Texture>("animation/character.png", engine->Get<nc::Render>());
+     //   
+     //}
+     //{
+     //    nc::PhisicsComponenet* component = actor->AddComponent<nc::PhisicsComponenet>();
+     //   // component->ApplyForce(nc::Vector2::right * 200);
+
+     //}
+    //std::unique_ptr<nc::Actor> actor = std::make_unique <nc::Actor>(nc::Transform{ nc::Vector2{200, 300}, 0, 5});
+    //{
+    //    //auto component = nc::ObjectFactory::Instance().Create<nc::SpriteComponent>("SpriteComponent");
+    //    //component->texture = engine->Get<nc::ResourceSystem>()->Get<nc::Texture>("kim.png", engine->Get<nc::Render>());
+    //    //actor->AddComponent(std::move(component));
+
+
+    //    nc::SpriteAnimationComponent* component = actor->AddComponent<nc::SpriteAnimationComponent>();
+    //    component->texture = engine->Get<nc::ResourceSystem>()->Get<nc::Texture>("character.png", engine->Get<nc::Render>());
+    //    component->fps = 12;
+    //    component->numFramesX = 12 ;
+    //    component->numFramesY = 8 ;
+    //}
+    //scene->AddActor(std::move(actor));
+
+    rapidjson::Document document;
+    bool success = nc::json::Load("scene.txt", document);
+    scene->Read(document);
+    assert(success);
 
 }
 

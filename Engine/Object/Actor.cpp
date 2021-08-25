@@ -1,5 +1,6 @@
 #include "Actor.h"
 #include"Grapics/Render.h"
+#include "Engine.h"
 #include "Componet/GraphicsComponent.h"
 #include<algorithm>
 
@@ -40,9 +41,43 @@ namespace nc
         return 0;// (texture) ? texture->Getsize().Length() * 0.5f * transform.scale.x : 0;
     }
 
-    void nc::Actor::AddComponent(std::unique_ptr<Component> component)
+    void Actor::AddComponent(std::unique_ptr<Component> component)
     {
-        component->owner =this;
+        component->owner = this;
         components.push_back(std::move(component));
     }
+
+    bool Actor::Write(const rapidjson::Value& value) const
+    {
+        return false;
+    }
+
+    bool Actor::Read(const rapidjson::Value& value)
+    {
+        JSON_READ(value, tag);
+        if (value.HasMember("transform"))
+        {
+            transform.Read(value["transform"]);
+        }
+        if (value.HasMember("components") && value["components"].IsArray())
+        {
+            for (auto& componentValue : value["components"].GetArray())
+            {
+                std::string type;
+                JSON_READ(componentValue, type);
+
+                auto component = ObjectFactory::Instance().Create<Component>(type);
+                if (component)
+                {
+                    component->owner = this;
+                    component->Read(componentValue);
+                    AddComponent(std::move(component));
+                }
+            }
+        }
+
+        return true;
+    }
+
+
 }

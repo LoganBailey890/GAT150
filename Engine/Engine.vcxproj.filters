@@ -98,6 +98,12 @@
     <ClCompile Include="Componet\PhisicsComponent.cpp">
       <Filter>Sources\Componet</Filter>
     </ClCompile>
+    <ClCompile Include="Componet\SpriteAnimationComponent.cpp">
+      <Filter>Sources\Componet</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Json.cpp">
+      <Filter>Sources\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\EventSystem.h">
@@ -187,5 +193,25 @@
     <ClInclude Include="Componet\PhisicsComponent.h">
       <Filter>Sources\Componet</Filter>
     </ClInclude>
+    <ClInclude Include="Componet\SpriteAnimationComponent.h">
+      <Filter>Sources\Componet</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Singltion.h">
+      <Filter>Sources\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Factory.h">
+      <Filter>Sources\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Json.h">
+      <Filter>Sources\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Serializable.h">
+      <Filter>Sources\Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Build\Resources\scene.txt">
+      <Filter>Resources</Filter>
+    </Text>
   </ItemGroup>
 </Project>
