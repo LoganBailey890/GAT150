@@ -8,9 +8,12 @@
 
 namespace nc
 {
+    class Object;
     struct Event
     {
         std::string name;
+        Object* receiver{ nullptr };
+        std::variant <int, bool, float, std::string, void*> data;
         
     };
 
@@ -20,12 +23,12 @@ namespace nc
         using function_t = std::function<void(const Event&)>;
 
 
-
+        void Unsubscribe(const std::string& name, Object* reveiver);
         virtual void Startup() override;
         virtual void Shutdown() override;
         virtual void Update(float dt) override;
 
-        void Subscribe(const std::string& name, function_t function);
+        void Subscribe(const std::string& name, function_t function,  Object* reviver = nullptr);
         void Notify(const Event& event);
 
     private:
@@ -33,6 +36,7 @@ namespace nc
         struct Observer
         {
             function_t function;
+            Object* reveiver;
         };
 
     private:

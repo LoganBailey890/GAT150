@@ -36,6 +36,9 @@
     <Filter Include="Sources\Componet">
       <UniqueIdentifier>{5c3bfe14-c1ea-4dd7-b031-d49289fae943}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Physics">
+      <UniqueIdentifier>{1943f21b-9991-4514-9450-b3f768ec1a16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -103,6 +106,21 @@
     </ClCompile>
     <ClCompile Include="Core\Json.cpp">
       <Filter>Sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Componet\RBPhysicsComponent.cpp">
+      <Filter>Sources\Componet</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\PhysicsSystem.cpp">
+      <Filter>Sources\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Componet\AudioComponent.cpp">
+      <Filter>Sources\Componet</Filter>
+    </ClCompile>
+    <ClCompile Include="Componet\TextComponent.cpp">
+      <Filter>Sources\Componet</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\ContactListener.cpp">
+      <Filter>Sources\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +225,21 @@
     </ClInclude>
     <ClInclude Include="Core\Serializable.h">
       <Filter>Sources\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Componet\RBPhysicsComponenet.h">
+      <Filter>Sources\Componet</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\PhysicsSystem.h">
+      <Filter>Sources\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Componet\AudioComponent.h">
+      <Filter>Sources\Componet</Filter>
+    </ClInclude>
+    <ClInclude Include="Componet\TextComponent.h">
+      <Filter>Sources\Componet</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\ContactListener.h">
+      <Filter>Sources\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

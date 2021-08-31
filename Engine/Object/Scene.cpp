@@ -13,26 +13,7 @@ namespace nc
 
         std::for_each(actors.begin(), actors.end(), [dt](auto& actor) { actor->Update(dt); });
 
-        //check collisions
-        for (size_t i = 0; i < actors.size(); i++)
-        {
-            for (size_t j = i + 1; j < actors.size(); j++)
-            {
-                if (actors[i]->destroy || actors[j]->destroy)continue;
-
-                nc::Vector2 dir = actors[i]->transform.position - actors[j]->transform.position;
-                float distance = dir.Length();
-                if (distance < actors[i]->GetRadius() + actors[j]->GetRadius())
-                {
-
-
-                    actors[i]->OnCollision(actors[j].get());
-                    actors[j]->OnCollision(actors[i].get());
-                }
-            }
-        }
-
-
+        
         // destroy actor
 
         auto iter = actors.begin();
@@ -74,6 +55,17 @@ namespace nc
         actors.clear();
     }
 
+    Actor* Scene::FindActor(const std::string& name)
+    {
+        for (auto& actor : actors)
+        {
+            if (actor->name == name)
+            {
+                return actor.get();
+            }
+        }
+    }
+
     bool Scene::Write(const rapidjson::Value& value) const
     {
         return false;
@@ -86,14 +78,28 @@ namespace nc
             for (auto& actorValue : value["actors"].GetArray())
             {
                 std::string type;
+               
                 JSON_READ(actorValue, type);
+                bool prototype = false;
+                JSON_READ(actorValue,prototype)
 
                auto actor =  ObjectFactory::Instance().Create<Actor>(type);
                if (actor)
                {
                    actor->scene = this;
                    actor->Read(actorValue);
-                   AddActor(std::move(actor));
+                   if (prototype)
+                   {
+                       std::string name = actor->name;
+                       ObjectFactory::Instance().RegisterPrototype<Actor>(name, std::move(actor));
+
+                   }
+                   else
+                   {
+                    
+                       AddActor(std::move(actor));
+                       
+                   }
                }
             }
         }

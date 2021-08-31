@@ -12,6 +12,9 @@
     <Filter Include="Sources\Actor">
       <UniqueIdentifier>{e3b5e88a-881b-4504-81bf-3e34c27da584}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\GameComponent">
+      <UniqueIdentifier>{48ead6e0-1c3e-4df1-8a99-a78ae20ef46c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -20,10 +23,28 @@
     <ClCompile Include="Game.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="GameComponent\PlayerComponent.cpp">
+      <Filter>Sources\GameComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="GameComponent\Enenmy.cpp">
+      <Filter>Sources\GameComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="GameComponent\PickUpComponent.cpp">
+      <Filter>Sources\GameComponent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
       <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponent\PlayerComponent.h">
+      <Filter>Sources\GameComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponent\Eenemy.h">
+      <Filter>Sources\GameComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponent\PickUpComponenet.h">
+      <Filter>Sources\GameComponent</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

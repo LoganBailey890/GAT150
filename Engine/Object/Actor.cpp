@@ -7,6 +7,21 @@
 
 namespace nc
 {
+    Actor::Actor(const Actor& other)
+    {
+        tag = other.tag;
+        name = other.name;
+        transform = other.transform;
+        scene = other.scene;
+
+        for (auto& component : other.components)
+        {
+            auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->Clone().release()));
+            clone->owner = this;
+            clone->Create();
+            AddComponent(std::move(clone));
+        }
+    }
     void nc::Actor::Update(float dt)
     {
   
@@ -35,16 +50,33 @@ namespace nc
         actor->parent = this;
         children.push_back(std::move(actor));
     }
-    float nc::Actor::GetRadius()
-    {
-        //return std::max(texture->Getsize().x,texture->Getsize().y) * 0.5f;
-        return 0;// (texture) ? texture->Getsize().Length() * 0.5f * transform.scale.x : 0;
-    }
+
 
     void Actor::AddComponent(std::unique_ptr<Component> component)
     {
         component->owner = this;
         components.push_back(std::move(component));
+    }
+
+    void Actor::BeginContact(Actor* other)
+    {
+        Event event;
+        event.name = "collision_enter";
+        event.data = other;
+        event.receiver = this;
+        scene->engine->Get<EventSystem>()->Notify(event);
+
+
+
+    }
+
+    void Actor::EndContact(Actor* other)
+    {
+        Event event;
+        event.name = "collision_exit";
+        event.data = other;
+        event.receiver = this;
+        scene->engine->Get<EventSystem>()->Notify(event);
     }
 
     bool Actor::Write(const rapidjson::Value& value) const
@@ -55,6 +87,7 @@ namespace nc
     bool Actor::Read(const rapidjson::Value& value)
     {
         JSON_READ(value, tag);
+        JSON_READ(value, name);
         if (value.HasMember("transform"))
         {
             transform.Read(value["transform"]);
@@ -71,6 +104,7 @@ namespace nc
                 {
                     component->owner = this;
                     component->Read(componentValue);
+                    component->Create();
                     AddComponent(std::move(component));
                 }
             }

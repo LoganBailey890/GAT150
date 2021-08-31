@@ -173,9 +173,12 @@
   <ItemGroup>
     <ClCompile Include="Audio\AudioChannel.cpp" />
     <ClCompile Include="Audio\AudioSystem.cpp" />
+    <ClCompile Include="Componet\AudioComponent.cpp" />
     <ClCompile Include="Componet\PhisicsComponent.cpp" />
+    <ClCompile Include="Componet\RBPhysicsComponent.cpp" />
     <ClCompile Include="Componet\SpriteAnimationComponent.cpp" />
     <ClCompile Include="Componet\SpriteComponent.cpp" />
+    <ClCompile Include="Componet\TextComponent.cpp" />
     <ClCompile Include="Core\FileSystem.cpp" />
     <ClCompile Include="Core\Json.cpp" />
     <ClCompile Include="Core\Timer.cpp" />
@@ -193,15 +196,20 @@
     <ClCompile Include="Math\Vector2.cpp" />
     <ClCompile Include="Object\Actor.cpp" />
     <ClCompile Include="Object\Scene.cpp" />
+    <ClCompile Include="Physics\ContactListener.cpp" />
+    <ClCompile Include="Physics\PhysicsSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Audio\AudioChannel.h" />
     <ClInclude Include="Audio\AudioSystem.h" />
+    <ClInclude Include="Componet\AudioComponent.h" />
     <ClInclude Include="Componet\Component.h" />
     <ClInclude Include="Componet\GraphicsComponent.h" />
     <ClInclude Include="Componet\PhisicsComponent.h" />
+    <ClInclude Include="Componet\RBPhysicsComponenet.h" />
     <ClInclude Include="Componet\SpriteAnimationComponent.h" />
     <ClInclude Include="Componet\SpriteComponent.h" />
+    <ClInclude Include="Componet\TextComponent.h" />
     <ClInclude Include="Core\FileSystem.h" />
     <ClInclude Include="Core\Json.h" />
     <ClInclude Include="Core\Serializable.h" />
@@ -227,6 +235,8 @@
     <ClInclude Include="Object\Actor.h" />
     <ClInclude Include="Object\Object.h" />
     <ClInclude Include="Object\Scene.h" />
+    <ClInclude Include="Physics\ContactListener.h" />
+    <ClInclude Include="Physics\PhysicsSystem.h" />
     <ClInclude Include="Resource\ResorceSystem.h" />
     <ClInclude Include="Resource\Resource.h" />
   </ItemGroup>

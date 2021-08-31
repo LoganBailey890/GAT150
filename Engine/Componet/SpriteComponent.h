@@ -8,6 +8,8 @@ namespace nc
 	class SpriteComponent :public GraphicsComponent
 	{
 	public:
+		std::unique_ptr<Object> Clone() const { return std::make_unique<SpriteComponent>(*this); }
+
 		void Update() override;
 		void Draw(Render* render) override;
 		virtual bool Write(const rapidjson::Value& value) const override;
