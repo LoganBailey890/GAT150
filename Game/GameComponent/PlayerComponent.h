@@ -25,6 +25,7 @@ public:
 	virtual bool Read(const rapidjson::Value& value) override;
 public:
 	float speed{ 0 };
+	float jump{ 0 };
 private:
 	std::list<nc::Actor*> contacts;
 

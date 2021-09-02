@@ -23,4 +23,10 @@ namespace nc
 			});
 	}
 
+	std::string unique_string(const std::string& str)
+	{
+		static int uniqieId = 0;
+		return str + std::to_string(uniqieId++);
+	}
+
 }

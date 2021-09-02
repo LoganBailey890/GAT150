@@ -24,6 +24,10 @@ namespace nc
     }
     void nc::Actor::Update(float dt)
     {
+        if (!active)
+        {
+            return;
+        }
   
         std::for_each(components.begin(), components.end(), [](auto& component)
         { 
@@ -36,6 +40,10 @@ namespace nc
 
     void nc::Actor::Draw(Render* render)
     {
+        if (!active)
+        {
+            return;
+        }
         std::for_each(components.begin(), components.end(), [render](auto& component)
         {
             if (dynamic_cast<GraphicsComponent*>(component.get()))

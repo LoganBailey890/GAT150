@@ -4,6 +4,7 @@
          "type":"Actor",
          "name":"Player",
          "tag":"Player",
+         "prototype":true,
          "transform":{
             "position":[
                400,
@@ -23,7 +24,8 @@
             },
             {
                "type":"PlayerComponent",
-               "speed":25
+               "speed":25,
+               "jump":350
             },
             {
                "type":"SpriteAnimationComponent",
@@ -60,8 +62,8 @@
                "data.isDynamic":true,
                "data.density":1,
                "data.lockAngle":true,
-               "data.restitution":0.5,
-               "data.gravityScale":2,
+               "data.restitution":0.2,
+               "data.gravityScale":2.5,
                "data.size":[
                   32,
                   32
@@ -71,30 +73,9 @@
       },
       {
          "type":"Actor",
-         "name":"Score",
-         "transform":{
-            "position":[
-               60,
-               20
-            ]
-         },
-         "components":[
-            {
-               "type":"TextComponent",
-               "fontName":"Fonts/SEVESBRG.TTF",
-               "fontSize":16,
-               "color":[
-                  1,
-                  1,
-                  1
-               ],
-               "text":"Hello World!"
-            }
-         ]
-      },
-      {
-         "type":"Actor",
+         "name": "bat",
          "tag":"Enemy",
+         "prototype":true,
          "transform":{
             "position":[
                600,
@@ -117,8 +98,8 @@
             {
                "type":"RBPhysicsComponent",
                "data.isDynamic":true,
-               "data.isSensor":true,
-               "data.density":1,
+               "data.isSensor":false,
+               "data.density":2.5,
                "data.lockAngle":true,
                "data.restitution":0.1,
                "data.gravityScale":0,
@@ -160,32 +141,174 @@
                ]
             },
             {
-                "type":"PickUpComponent"
+               "type":"PickUpComponent"
             }
          ]
       },
       {
          "type":"Actor",
+         "name":"tile01",
          "tag":"Ground",
+         "prototype":true,
          "transform":{
-            "position":[
-               400,
-               550
+            "scale":[
+               1,
+               1
             ],
             "rotation":0.0
          },
          "components":[
             {
                "type":"SpriteComponent",
-               "textureName":"Ground.png"
+               "textureName":"Tile.png",
+               "rect":[
+                  160,
+                  192,
+                  32,
+                  32
+               ]
             },
             {
                "type":"RBPhysicsComponent",
                "data.isDynamic":false,
                "data.density":1,
                "data.size":[
-                  800,
-                  20
+                  32,
+                  32
+               ]
+            }
+         ]
+      },
+      {
+         "type":"Actor",
+         "name":"tile02",
+         "tag":"Ground",
+         "prototype":true,
+         "transform":{
+            "scale":[
+               1,
+               1
+            ],
+            "rotation":0.0
+         },
+         "components":[
+            {
+               "type":"SpriteComponent",
+               "textureName":"Tile.png",
+               "rect":[
+                  416,
+                  0,
+                  32,
+                  32
+               ]
+            },
+            {
+               "type":"RBPhysicsComponent",
+               "data.isDynamic":false,
+               "data.density":1,
+               "data.size":[
+                  32,
+                  32
+               ]
+            }
+         ]
+      },
+      {
+         "type":"Actor",
+         "name":"tile03",
+         "prototype":true,
+         "transform":{
+            "scale":[
+               1,
+               1
+            ],
+            "rotation":0.0
+         },
+         "components":[
+            {
+               "type":"SpriteComponent",
+               "textureName":"Tile2.png",
+               "rect":[
+                  224,
+                  416,
+                  32,
+                  32
+               ]
+            },
+            {
+               "type":"RBPhysicsComponent",
+               "data.isDynamic":false,
+               "data.density":1,
+               "data.size":[
+                  32,
+                  32
+               ]
+            }
+         ]
+      },
+      {
+         "type":"Actor",
+         "name":"tile04",
+         "tag":"Ground",
+         "prototype":true,
+         "transform":{
+            "scale":[
+               1,
+               1
+            ],
+            "rotation":0.0
+         },
+         "components":[
+            {
+               "type":"SpriteComponent",
+               "textureName":"Tile.png",
+               "rect":[
+                  160,
+                  320,
+                  32,
+                  32
+               ]
+            },
+            {
+               "type":"RBPhysicsComponent",
+               "data.isDynamic":false,
+               "data.density":1,
+               "data.size":[
+                  32,
+                  32
+               ]
+            }
+         ]
+      },
+      {
+         "type":"Actor",
+         "name":"tile05",
+         "prototype":true,
+         "transform":{
+            "scale":[
+               1,
+               1
+            ],
+            "rotation":0.0
+         },
+         "components":[
+            {
+               "type":"SpriteComponent",
+               "textureName":"Tile.png",
+               "rect":[
+                  192,
+                  192,
+                  32,
+                  32
+               ]
+            },
+            {
+               "type":"RBPhysicsComponent",
+               "data.isDynamic":false,
+               "data.density":1,
+               "data.size":[
+                  32,
+                  32
                ]
             }
          ]

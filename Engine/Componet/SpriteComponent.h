@@ -17,6 +17,7 @@ namespace nc
 
 	public:
 		std::shared_ptr<Texture> texture;
+		SDL_Rect rect;
 
 		// Inherited via GraphicsComponent
 	};

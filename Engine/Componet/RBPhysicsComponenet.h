@@ -8,6 +8,8 @@ namespace nc
 	{
 
 	public:
+		RBPhysicsComponent() = default;
+		RBPhysicsComponent(const RBPhysicsComponent & other);
 		std::unique_ptr<Object> Clone() const { return std::make_unique<RBPhysicsComponent>(*this); }
 
 		virtual ~RBPhysicsComponent();

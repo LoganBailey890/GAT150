@@ -1,5 +1,6 @@
 #include "Eenemy.h"
 #include "Engine.h"
+#include<cstdlib>
 
 using namespace nc;
 
@@ -10,12 +11,16 @@ void EnemeyComponent::Update()
 	{
 
 		Vector2 direction = player->transform.position - owner->transform.position;
-		Vector2 force = direction.Normalized() * speed;
+		if (abs(direction.x) < 150 && abs(direction.y) < 150)
+		{
+			Vector2 force = direction.Normalized() * speed;
 
-		PhisicsComponenet* physicsComponent = owner->GetComponent<PhisicsComponenet>();
-		assert(physicsComponent);
+			PhisicsComponenet* physicsComponent = owner->GetComponent<PhisicsComponenet>();
+			assert(physicsComponent);
 
-		physicsComponent->ApplyForce(force);
+			physicsComponent->ApplyForce(force);
+
+		}
 
 	}
 

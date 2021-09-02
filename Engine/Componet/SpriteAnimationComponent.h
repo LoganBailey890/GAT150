@@ -35,7 +35,6 @@ namespace nc
 		float frameTime{ 0 };
 		int startFrame{ 0 };
 		int endFrame{ 0 };
-		SDL_Rect rect;
 		std::map<std::string, Sequence> sequences;
 		std::string sequenceName;
 	};

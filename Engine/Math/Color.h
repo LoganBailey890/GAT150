@@ -54,8 +54,8 @@ namespace nc
        {
             SDL_Color color;
             color.r = static_cast<Uint8>(r * 255);
-            color.g = 255;
-            color.b = 255;
+            color.g = static_cast<Uint8>(g * 255);
+            color.b = static_cast<Uint8>(b * 255);
             color.a = 255;
 
             return color;

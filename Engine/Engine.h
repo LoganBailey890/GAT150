@@ -40,6 +40,7 @@
 
 #include "Object/Actor.h"
 #include "Object/Scene.h"
+#include "Object/Tilemap.h"
 //compentes
 #include "Componet/SpriteComponent.h"
 #include "Componet/PhisicsComponent.h"
